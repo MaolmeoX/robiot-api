@@ -13,17 +13,17 @@ export const SwaggerConfig: SwaggerOptions = {
             },
         },
         info: {
-            title: 'AlterMap',
+            title: 'Robiot API',
             version: '1.0.0',
-            description: 'Welcome on AlterMap REST API',
+            description: 'Welcome on Robiot REST API',
             license: {
                 name: 'MIT',
                 url: 'https://choosealicense.com/licenses/mit/',
             },
             contact: {
-                name: 'AlterMap',
-                url: 'https://altermap.io/',
-                email: 'contact@altermap.io',
+                name: 'Robiot',
+                url: 'https://robiot.io/',
+                email: 'contact@robiot.io',
             },
         },
         servers: [

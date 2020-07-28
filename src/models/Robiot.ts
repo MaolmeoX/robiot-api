@@ -5,7 +5,7 @@ export type RobiotDocument = mongoose.Document & {
     name: string;
     ipAddr: string;
     id: number;
-    post: ConfigurationDocument[];
+    configuration: ConfigurationDocument[];
 };
 
 const robiotSchema = new mongoose.Schema(
@@ -13,7 +13,7 @@ const robiotSchema = new mongoose.Schema(
         name: String,
         ipAddr: Number,
         id: Number,
-        config: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Configuration' }],
+        configuration: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Configuration' }],
     },
     { timestamps: true },
 );
