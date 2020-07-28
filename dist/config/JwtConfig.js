@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.JwtConfig = void 0;
 const passport_jwt_1 = require("passport-jwt");
 const secrets_1 = require("../util/secrets");
 exports.JwtConfig = {
