@@ -1,0 +1,65 @@
+components:
+    schemas:
+        Robiot:
+            type: object
+            properties:
+                name:
+                    type: string
+                ipAddr:
+                    type: string
+                id:
+                    type: number
+                post:
+                    type: array
+                email:
+                    type: string
+
+/api/v1/robiot/{configId}:
+    get:
+        servers:
+            - url: http://localhost:3000/
+        description: get config for robiot by config ID
+        parameters:
+            - in: path
+              name: configId
+              schema:
+                type: integer
+        tags: [Robiot]
+        responses:
+            '200':
+                description: return one config
+                content:
+                    application/json:
+                        schema:
+                            type: string
+    put:
+        servers:
+            - url: http://localhost:3000/
+        description: update config for robiot by ID
+        parameters:
+            - in: path
+              name: configId
+              schema:
+                  type: integer
+        tags: [Robiot]
+        responses:
+            '200':
+                description: A bearer token
+                content:
+                    application/json:
+                        schema:
+                            type: string
+
+/api/v1/robiot:
+    get:
+        servers:
+            - url: http://localhost:3000/
+        description: get all config by robiot
+        tags: [Robiot]
+        responses:
+            '200':
+                description: A robiot and his config list
+                content:
+                    application/json:
+                        schema:
+                            type: string
