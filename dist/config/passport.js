@@ -16,7 +16,7 @@ passport_1.default.serializeUser(function (user, done) {
 passport_1.default.deserializeUser(function (user, done) {
     done(null, user);
 });
-passport_1.default.use(new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+passport_1.default.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     User_1.User.findOne({ email: email.toLowerCase() }, (err, user) => {
         if (err) {
             return done(err);
@@ -31,7 +31,7 @@ passport_1.default.use(new LocalStrategy({ usernameField: "email" }, (email, pas
             if (isMatch) {
                 return done(undefined, user);
             }
-            return done(undefined, false, { message: "Invalid email or password." });
+            return done(undefined, false, { message: 'Invalid email or password.' });
         });
     });
 }));

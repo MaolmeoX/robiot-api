@@ -24,11 +24,16 @@ const app = express_1.default();
 // Connect to MongoDB
 const mongoUrl = secrets_1.MONGODB_URI;
 mongoose_1.default.Promise = bluebird_1.default;
-mongoose_1.default.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, dbName: "altermap" }).then(() => { }).catch(err => {
-    console.log("MongoDB connection error. Please make sure MongoDB is running. " + err);
+mongoose_1.default
+    .connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, dbName: 'altermap' })
+    .then(() => {
+    /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
+})
+    .catch((err) => {
+    console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
 });
 // Express configuration
-app.set("port", process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000);
 app.use(compression_1.default());
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
@@ -38,12 +43,12 @@ app.use(express_session_1.default({
     secret: secrets_1.JWT_SECRET,
     store: new MongoStore({
         url: mongoUrl,
-        autoReconnect: true
-    })
+        autoReconnect: true,
+    }),
 }));
 app.use(passport_1.default.initialize());
 app.use(passport_1.default.session());
-app.use(lusca_1.default.xframe("SAMEORIGIN"));
+app.use(lusca_1.default.xframe('SAMEORIGIN'));
 app.use(lusca_1.default.xssProtection(true));
 app.use(cors_1.default());
 /**
@@ -51,6 +56,6 @@ app.use(cors_1.default());
  */
 app.use(index_1.default);
 const swaggerSpec = swagger_jsdoc_1.default(SwaggerConfig_1.SwaggerConfig);
-app.use("/api-docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
+app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
 exports.default = app;
 //# sourceMappingURL=app.js.map
