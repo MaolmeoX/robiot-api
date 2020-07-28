@@ -11,12 +11,12 @@ export async function register(
   notifications: boolean
 ) {
   const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-  const user = await User.create({
+  const user = new User( {
     email,
     password: hashedPassword,
     name,
-    notifications
-  });
+    notifications});
+  await user.save();
   logger.debug(JSON.stringify(user));
   return jwt.sign({ email }, JWT_SECRET);
 }
